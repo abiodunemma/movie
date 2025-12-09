@@ -1,14 +1,56 @@
 import { StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import { Tabs } from 'expo-router'
+import Colors from '@/costants/colors'
+import { Feather, Octicons } from '@expo/vector-icons';
 
-const _layout = () => {
+const TabLayout = () => {
   return (
-    <View>
-      <Text>_layout</Text>
-    </View>
+    <Tabs
+        screenOptions={{
+            tabBarInactiveTintColor: Colors.gray,
+            tabBarActiveTintColor: Colors.primary,
+            tabBarStyle: 
+            { 
+                
+                backgroundColor: Colors.background, 
+                borderTopColor: Colors.background  
+            },
+        }}
+        >
+
+<Tabs.Screen name='(home)/index' options={{ 
+    tabBarIcon: ({color}) => (
+        <Feather name="home" size={20} color={color} />
+    ),
+    tabBarLabel: 'Home',
+    headerShown: false,
+ }} />
+<Tabs.Screen name='movies'  options={{ 
+    tabBarIcon: ({color}) => (
+        <Feather name="play-circle" size={20} color={color} />
+    ),
+    tabBarLabel: 'Movies',
+    headerShown: false,
+ }}/>
+<Tabs.Screen name='series'  options={{ 
+    tabBarIcon: ({color}) => (
+        <Feather name="folder" size={20} color={color} />
+    ),
+    tabBarLabel: 'Tv/Series',
+    headerShown: false,
+ }} />
+<Tabs.Screen name='profile' options={{ 
+    tabBarIcon: ({color}) => (
+        <Octicons name="person" size={20} color={color} />
+    ),
+    tabBarLabel: 'Me',
+    headerShown: false,
+ }} />
+    </Tabs>
   )
 }
 
-export default _layout
+export default TabLayout
 
 const styles = StyleSheet.create({})

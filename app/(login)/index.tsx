@@ -21,7 +21,11 @@ const LoginScreen = () => {
 <Text style={styles.forget}>Forget Password</Text>
 </View>
 
-<AppButtons style={{backgroundColor: Colors.primary,  width: "100%", height:50}} title='Login' />
+<AppButtons
+ style={{backgroundColor: Colors.primary,  width: "100%", height:50}}
+  title='Login'
+  onPress={()=>router.push("/(tabs)/(home)")}
+   />
     
  <Text style={styles.createaccount}>
     Havent signed up yet? {" "}

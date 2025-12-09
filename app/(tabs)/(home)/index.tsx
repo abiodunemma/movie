@@ -1,14 +1,25 @@
-import { StyleSheet, Text, View } from 'react-native'
+import { ScrollView, StyleSheet, Text, View } from 'react-native'
 import React from 'react'
+import Colors from '@/costants/colors'
+import OverviewSection from '@/components/OveriewSection'
 
-const index = () => {
+const HomeScreen = () => {
   return (
-    <View>
-      <Text>index</Text>
+    <View style={styles.contianer}>
+        <ScrollView>
+            <OverviewSection />
+
+        </ScrollView>
+     
     </View>
-  )
-}
+  );
+};
 
-export default index
+export default HomeScreen
 
-const styles = StyleSheet.create({})
+const styles = StyleSheet.create({
+    contianer: {
+        flex: 1,
+        backgroundColor: Colors.background,
+    },
+})
