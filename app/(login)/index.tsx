@@ -25,7 +25,11 @@ const LoginScreen = () => {
     
  <Text style={styles.createaccount}>
     Havent signed up yet? {" "}
-    <Text  onPress={()=>router.push("/signup")} style={{color: Colors.primary}}>Create an account</Text>
+    <Text 
+     onPress={()=>router.push("/signup")}
+      style={{color: Colors.primary}}>
+        Create an account
+      </Text>
  </Text>
      </View>
     </SafeAreaView>
