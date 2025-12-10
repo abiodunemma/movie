@@ -1,9 +1,11 @@
-import { ScrollView, StyleSheet, Text, View, TouchableOpacity, FlatListComponent, FlatList } from 'react-native'
+import { ScrollView, StyleSheet, Text, View, TouchableOpacity, FlatListComponent, FlatList, Image } from 'react-native'
 import React from 'react'
 import Colors from '@/costants/colors'
 import OverviewSection from '@/components/OveriewSection'
 import MovieCard from '@/components/MovieCard'
+
 import { movies } from '@/costants/mock-data'
+import ContinueWatchingMoviesCard from '@/components/ContinueWatchingMovies'
 
 
 const SectionHeader = ({title}: {title: string}) =>  {
@@ -27,11 +29,45 @@ const HomeScreen = () => {
         <ScrollView>
             <OverviewSection />
 
-            <View style={{flex: 1}}>
+         
               <View style={{marginVertical: 20}}>
                 <SectionHeader title="Trending now ⚠" />
+               
+               <FlatList
+data={[...movies].reverse()}
+  renderItem={({ item }) => (
+    <MovieCard
+      title={item.title}
+      genre={item.genre}
+      image={item.image}
+    />
+  )}
+  horizontal
+  
+/>
                 </View>
+
+
+<View style={{marginVertical: 20}}>
+  <SectionHeader title="Continue Watching" />
 <FlatList
+data={[...movies].reverse()}
+renderItem={({item}) => (
+<ContinueWatchingMoviesCard 
+  genre={item.genre}
+  title={item.title}
+  image={item.image}
+/>
+)} 
+horizontal
+/>
+  
+                  </View>
+
+                
+              <View style={{marginVertical: 20}}>
+                <SectionHeader title="New Releases  🎉" />
+                <FlatList
   data={movies}
   renderItem={({ item }) => (
     <MovieCard
@@ -41,15 +77,32 @@ const HomeScreen = () => {
     />
   )}
   horizontal
-  keyExtractor={(item, index) => index.toString()}
+  
 />
+            
 
+</View>
 
+<View style={{marginVertical: 20}}>
+  <SectionHeader title="International Picks " />
+<FlatList
+data={[...movies].reverse()}
+renderItem={({item}) => (
+<ContinueWatchingMoviesCard 
+  genre={item.genre}
+  title={item.title}
+  image={item.image}
+/>
+)} 
+horizontal
+/>
 
                   </View>
         </ScrollView>
      
     </View>
+
+    
   );
 };
 
@@ -65,7 +118,8 @@ const styles = StyleSheet.create({
       alignItems: "center",
       justifyContent: "space-between",
       marginBottom: 14,
-      paddingHorizotal: 14,
+      paddingHorizontal: 14,
+
     }
 
 })
